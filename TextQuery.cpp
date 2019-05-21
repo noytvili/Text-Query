@@ -18,9 +18,12 @@ TextQuery::TextQuery(ifstream &is): file(new vector<string>)
 		file->push_back(text);        // remember this line of text
 		int n = file->size() - 1;     // the current line number
 //////////////////////////////////////////////////////////////////////////
-		// istringstream line(text);     // separate the line into words
-		// string word;               
-		// while (line >> word) {        // for each word in that line
+		 istringstream line(text);     // separate the line into words
+		 string word;               
+		 while (line >> word) {        // for each word in that line
+		    auto start_words = sregex_iterator(word.begin(), word.end(), words_regex);
+			smatch match = *start_words;
+			word = match.str();
 //////////////////////////////////////////////////////////////////////////	
             // if word isn't already in wm, subscripting adds a new entry
             auto &lines = wm[word]; // lines is a shared_ptr 
