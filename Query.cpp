@@ -33,7 +33,7 @@ QueryResult NotQuery::eval(const TextQuery &text) const
     
 }
 
-QueryResult AndQuery::eval (const TextQuery& text) const
+QueryResult AndQuery::eval (const TextQuery& text) const  
 {
   QueryResult left_result = text.query(left_query);
   QueryResult right_result = text.query(right_query);
